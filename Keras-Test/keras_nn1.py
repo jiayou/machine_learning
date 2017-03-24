@@ -55,5 +55,7 @@ hist = model.fit(X_train, Y_train, shuffle=True, validation_split=0.2, batch_siz
 res= model.evaluate(X_test, Y_test)
 
 
-#Y_predict = model.predict(X_test)
-#print(Y_predict)
+#hist
+#model.summary()
+#model.get_config()
+
