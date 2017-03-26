@@ -53,7 +53,7 @@ model.add(Activation("softmax"))
 
 # model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
 model.compile(loss='categorical_crossentropy',
-              optimizer='sgd',
+              optimizer='adam',
               metrics=['accuracy'])
 
 model.summary()
@@ -83,8 +83,8 @@ for i in range(length_test):
 #
 #model.train_on_batch(X_train, Y_train)
 hist = model.fit(X_train, Y_train, shuffle=True, 
-                 epochs = 30,
-                 validation_split=0.2, batch_size=100)
+                 epochs = 20,
+                 validation_split=0.2, batch_size=200)
 
 #%% Test
 Y_predict = model.predict(X_test, batch_size=32, verbose=0)
