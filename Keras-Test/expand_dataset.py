@@ -3,27 +3,14 @@
 """
 Created on Fri Mar 24 20:19:16 2017
 
-TODO:
-3) the filters: how did it work?
-
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
-
-import gzip, struct
-
-def read_data(label_url,image_url):
-    with gzip.open(label_url) as flbl:
-        magic, num = struct.unpack(">II",flbl.read(8))
-        label = np.fromstring(flbl.read(),dtype=np.int8)
-    with gzip.open(image_url,'rb') as fimg:
-        magic, num, rows, cols = struct.unpack(">IIII",fimg.read(16))
-        image = np.fromstring(fimg.read(),dtype=np.uint8).reshape(len(label),rows,cols)
-    return (label, image)
-
-
 from PIL import Image
+
+from datasets import mnist_get_train_data, mnist_get_test_data
+
 def image_variants(img2d, R=1):
 
     im1 = np.zeros(img2d.shape, dtype='uint8')
@@ -86,7 +73,7 @@ def test_image_variants(img):
     ax.imshow(mm, 'Greys')
     
 def expanded_mnist_dataset():
-    (train_lbl, train_img) = read_data('datasets/mnist/train-labels-idx1-ubyte.gz','datasets/mnist/train-images-idx3-ubyte.gz')
+    (train_lbl, train_img) = mnist_get_train_data()
     return expand_dataset(train_lbl, train_img)
     
 if __name__=='__main__':
@@ -94,8 +81,7 @@ if __name__=='__main__':
     # test_image_variants0()
 
     #% Load Data
-    #(train_lbl, train_img) = read_data('datasets/mnist/train-labels-idx1-ubyte.gz','datasets/mnist/train-images-idx3-ubyte.gz')
-    (val_lbl, val_img) = read_data('datasets/mnist/t10k-labels-idx1-ubyte.gz','datasets/mnist/t10k-images-idx3-ubyte.gz')
+    (val_lbl, val_img) = mnist_get_test_data()
     # test_image_variants(val_img[0])
 
     new_lbl, new_img = expand_dataset(val_lbl, val_img)

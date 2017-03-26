@@ -18,25 +18,8 @@ from keras.layers import Dense, Activation, Flatten, Conv2D, MaxPooling2D, Dropo
 import numpy as np
 import matplotlib.pyplot as plt
 
-import gzip, struct
 import datetime
 
-def read_data(label_url,image_url):
-    with gzip.open(label_url) as flbl:
-        magic, num = struct.unpack(">II",flbl.read(8))
-        label = np.fromstring(flbl.read(),dtype=np.int8)
-    with gzip.open(image_url,'rb') as fimg:
-        magic, num, rows, cols = struct.unpack(">IIII",fimg.read(16))
-        image = np.fromstring(fimg.read(),dtype=np.uint8).reshape(len(label),rows,cols)
-    return (label, image)
-
-#%% Load Data
-(train_lbl, train_img) = read_data('datasets/mnist/train-labels-idx1-ubyte.gz','datasets/mnist/train-images-idx3-ubyte.gz')
-(val_lbl, val_img) = read_data('datasets/mnist/t10k-labels-idx1-ubyte.gz','datasets/mnist/t10k-images-idx3-ubyte.gz')
-
-#%% Expanded Data Set
-from expand_dataset import expanded_mnist_dataset
-(train_lbl, train_img) = expanded_mnist_dataset()
 
 #%% Model
 model = Sequential()
@@ -58,8 +41,14 @@ model.compile(loss='categorical_crossentropy',
 
 model.summary()
 
-#%% Fit
 
+#%% Load Data
+import datasets
+(train_lbl, train_img) = datasets.mnist_get_train_data_expanded()
+(val_lbl, val_img) = datasets.mnist_get_test_data()
+
+
+#%% Fit
 
 tensor_shape_train = list(train_img.shape)
 tensor_shape_train.append(1)
@@ -83,8 +72,11 @@ for i in range(length_test):
 #
 #model.train_on_batch(X_train, Y_train)
 hist = model.fit(X_train, Y_train, shuffle=True, 
-                 epochs = 20,
+                 epochs = 5,
                  validation_split=0.2, batch_size=200)
+
+result = model.evaluate(X_test, Y_test)
+print(result)
 
 #%% Test
 Y_predict = model.predict(X_test, batch_size=32, verbose=0)

@@ -37,6 +37,8 @@ model.compile(loss='categorical_crossentropy',
               optimizer=SGD(lr=0.01, momentum=0.9, nesterov=True),
               metrics=['accuracy'])
 
+model.summary()
+
 X_train = train_img.reshape(60000, 784) /255
 X_test = val_img.reshape(10000, 784) /255
 
@@ -52,10 +54,14 @@ for i in range(10000):
 #model.train_on_batch(X_train, Y_train)
 hist = model.fit(X_train, Y_train, shuffle=True, validation_split=0.2, batch_size=50)
 
-res= model.evaluate(X_test, Y_test)
+result = model.evaluate(X_test, Y_test)
+print(result)
 
-
-#hist
-#model.summary()
-#model.get_config()
+#%% Test
+Y_predict = model.predict(X_test, batch_size=32, verbose=0)
+predict_lbl = Y_predict.argmax(1)
+errors = np.where(predict_lbl != val_lbl)
+mismatch = errors[0]
+print('\n\n')
+print('Error: ', mismatch.size)
 
