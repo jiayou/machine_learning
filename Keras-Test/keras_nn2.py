@@ -73,9 +73,12 @@ for i in range(length_test):
 #model.train_on_batch(X_train, Y_train)
 hist = model.fit(X_train, Y_train, shuffle=True, 
                  epochs = 5,
-                 validation_split=0.2, batch_size=200)
+                 validation_split=0.2, 
+                 validation_data=(X_test, Y_test),
+                 batch_size=200)
 
 result = model.evaluate(X_test, Y_test)
+print('\n\n')
 print(result)
 
 #%% Test
@@ -83,7 +86,6 @@ Y_predict = model.predict(X_test, batch_size=32, verbose=0)
 predict_lbl = Y_predict.argmax(1)
 errors = np.where(predict_lbl != val_lbl)
 mismatch = errors[0]
-print('\n\n')
 print('Error: ', mismatch.size)
 
 #%% Table View
