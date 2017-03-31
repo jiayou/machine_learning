@@ -5,14 +5,22 @@ Created on Thu Mar 30 10:56:36 2017
 @author: L-wxia1
 """
 
-import sys
-import PyQt5
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtGui import QPainter, QColor, QFont, QBrush, QImage 
+from PyQt5.QtGui import QPainter, QColor, QBrush
 from PyQt5.QtCore import Qt, QBasicTimer, QRectF, QCoreApplication, QRect, QPoint
-import numpy as np
-from PIL import Image
+from random import randint
+import sys
 
+
+#%%        
+class Egg:
+    def __init__(self, lim):
+        x0,x1,y0,y1 = lim
+        self.x = randint(x0, x1-1)
+        self.y = randint(y0, y1-1)
+
+        
+#%%
 class GreedySnakeGame(QWidget):
 
     BOARDER = 20    
@@ -20,7 +28,10 @@ class GreedySnakeGame(QWidget):
     
     def __init__(self):
         super().__init__()
-        self.snake = GreedySnake((0,self.BOARDER,0,self.BOARDER))
+        field = (0,self.BOARDER,0,self.BOARDER)
+        self.snake = GreedySnake(field)
+        self.egg = Egg(field)
+        self.field = field
         self.score = 0
         self.initUI()
         
@@ -33,14 +44,20 @@ class GreedySnakeGame(QWidget):
 #        print('Timer Triggered', event.timerId())
 #        self.print_snake()
         if self.snake.is_alive():
-            self.score+=1
-            self.snake.move('')
+            self.move_snake('')
         else:
             self.score = 0
             self.timer.stop()
+        
         self.update()
-            
+        self.setWindowTitle('Score: ' + str(self.score))
 
+    def move_snake(self, direction):
+        self.snake.move(direction)
+        if self.snake.eat(self.egg):
+            self.score+=10
+            self.egg = Egg(self.field)
+        
         
     def paintEvent(self, event):
 #        print('Paint Event Triggered')
@@ -66,6 +83,14 @@ class GreedySnakeGame(QWidget):
             obj = QRect(c, d)
             painter.drawRect(obj)
 
+        painter.setBrush(QBrush(QColor(255, 0, 0)))
+        xx = self.egg.x
+        yy = self.egg.y
+        c = QPoint( xx*zf,   yy*zf)
+        d = QPoint( (1+xx)*zf,   (1+yy)*zf)
+        obj = QRect(c, d)
+        painter.drawEllipse(obj)
+        
         painter.end()
         
         
@@ -78,22 +103,22 @@ class GreedySnakeGame(QWidget):
             return
             
         if e.key() == Qt.Key_Up:
-            self.snake.move('up')
+            self.move_snake('up')
             self.update()
             return
             
         if e.key() == Qt.Key_Down:
-            self.snake.move('down')
+            self.move_snake('down')
             self.update()
             return
             
         if e.key() == Qt.Key_Left:
-            self.snake.move('left')
+            self.move_snake('left')
             self.update()
             return
             
         if e.key() == Qt.Key_Right:
-            self.snake.move('right')
+            self.move_snake('right')
             self.update()
             return
             
@@ -111,7 +136,7 @@ class GreedySnakeGame(QWidget):
         
         self.resize(width, height)
         self.move(300, 300)
-        self.setWindowTitle('GreedySnakeGame')
+        self.setWindowTitle('Greedy Snake')
         self.timer = QBasicTimer()
         self.show()
 
@@ -126,6 +151,7 @@ class GreedySnakeGame(QWidget):
     def get_score(self):
         return self.score
         
+#%%
 class GreedySnake:
     def __init__(self, lim):
         self.lim = lim
@@ -134,7 +160,7 @@ class GreedySnake:
     def revive(self):
         center_x = int(self.lim[-1] * 0.5)
 
-        self.position = [(center_x, 0), (center_x, 1)]
+        self.position = [(center_x, 1), (center_x, 0)]
         self.direction = 'down'
         self.alive = True
         print('Snake revived.')
@@ -167,7 +193,7 @@ class GreedySnake:
 #            return
 #            
         if   m==('down', 'up') or m==('up', 'down') or m==('left', 'right') or m==('right', 'left'):
-#            self.die();
+            self.die();
             m==m
         elif new_direction == 'left':
             self.dx = -1
@@ -184,9 +210,9 @@ class GreedySnake:
         else:
             return
             
-        self.position[0] = self.position[1]
-        x = self.position[1][0]+ self.dx
-        y = self.position[1][1]+ self.dy
+        self.position[1] = self.position[0]
+        x = self.position[0][0]+ self.dx
+        y = self.position[0][1]+ self.dy
         
         x0,x1,y0,y1 = self.lim
         if x<x0 or x>=x1 or y<y0 or y>=y1:
@@ -195,9 +221,13 @@ class GreedySnake:
         self.dx=0
         self.dy=0
         
-        self.position[1] = [x,y]
+        self.position[0] = [x,y]
 #        print(self.position)
         
+    def eat(self, egg):
+#        print (self.position[0], (egg.x, egg.y), self.position[0] == (egg.x, egg.y))
+        return self.position[0] == [egg.x, egg.y]
+    
 
 #%% visualization
 if __name__ == '__main__':
@@ -208,14 +238,9 @@ if __name__ == '__main__':
         app = QApplication(sys.argv)
     
     game = GreedySnakeGame()
-#    print (game.score)
+#   print (game.score)
     code = app.exec_()
     
+    print('Exit Code: ', code)
     
-    print(code)
-#    quit()
-#    sys.exit(code)
     
-#    game = GreedySnakeGame
-#    game.
-#    
