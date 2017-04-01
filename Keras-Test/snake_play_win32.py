@@ -6,8 +6,6 @@ Created on Fri Mar 31 15:03:25 2017
 """
 
 
-import numpy as np
-
 #%%
 SM_CXSCREEN = 0
 SM_CYSCREEN = 1
@@ -63,27 +61,23 @@ import win32con
 import subprocess
 import _thread
 
-
 #subprocess.run('python snake.py')
 
 _thread.start_new_thread(subprocess.run, ('python snake.py',))
 
 w= win32gui.FindWindow(None, 'Score: 0')
+win32gui.IsWindow(w)
 
 win32gui.SendMessage(w, win32con.WM_KEYDOWN, 32, 0)
 
-win32gui.IsWindow(w)
-
 title = win32gui.GetWindowText(w)
-
-##%%
-#import win32api
-#
 
 
 #%% pass key
 
 from PIL import ImageGrab
+import numpy as np
+
 bbox = win32gui.GetWindowRect(w)
 img0 = ImageGrab.grab(bbox)
 
@@ -102,3 +96,4 @@ print(data)
 img.show()
 
 
+#%%

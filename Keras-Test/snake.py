@@ -12,14 +12,6 @@ from random import randint
 import sys
 
 
-#%%        
-class Egg:
-    def __init__(self, lim):
-        x0,x1,y0,y1 = lim
-        self.x = randint(x0, x1-1)
-        self.y = randint(y0, y1-1)
-
-        
 #%%
 class GreedySnakeGame(QWidget):
 
@@ -229,6 +221,14 @@ class GreedySnake:
         return self.position[0] == [egg.x, egg.y]
     
 
+#%%        
+class Egg:
+    def __init__(self, lim):
+        x0,x1,y0,y1 = lim
+        self.x = randint(x0, x1-1)
+        self.y = randint(y0, y1-1)
+
+        
 #%% visualization
 if __name__ == '__main__':
 #    app = QApplication(sys.argv)
