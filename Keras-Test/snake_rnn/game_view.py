@@ -21,6 +21,7 @@ import logging
 class GreedySnakeGameView(QWidget):
     
     ZOOM_FACTOR = 10
+    ACCELERATOR = 1
 
     def __init__(self, game):
         self.logger = logging.getLogger(__name__)
@@ -32,15 +33,16 @@ class GreedySnakeGameView(QWidget):
 
         self.logger.debug('GreedySnakeGameView set up timer...')
         time_step = 2000/game.BOARDER + 10
+        time_step /= self.ACCELERATOR
         self.timer = QBasicTimer()
-        self.timer.start(time_step , self)
+        self.timer.start(int(time_step), self)
         
         self.logger.debug('GreedySnakeGameView init complete.')
 
     def timerEvent(self, event):
 #        self.logger.debug('TimerEvent Triggered.')
         self.game.update()
-        if self.game.is_running():
+        if not self.game.gameover():
             self.update()
         
     def paintEvent(self, event):
@@ -134,6 +136,7 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
     
     new_game = GreedySnakeGame()
+    new_game.restart()
     
     GreedySnakeGameGUI(new_game, sys.argv)
 

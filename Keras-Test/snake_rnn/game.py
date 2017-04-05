@@ -10,17 +10,18 @@ import logging
 
 class GreedySnakeGame():
 
-    BOARDER = 20
+    BOARDER = 8
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
         
-        field  = (0,self.BOARDER,0,self.BOARDER)
-        self.snake  = GreedySnake(field)
-        self.egg    = Egg(field)
-        self.field  = field
-        self.running = False
-        self.score = 0
+        rect  = (0, 0, self.BOARDER, self.BOARDER)
+        self.snake  = GreedySnake(rect)
+        self.egg    = Egg(rect)
+        self.rect  = rect
+        
+    def key_arrow(self, direction):
+        self.move_snake(direction)
         
     def key_up(self):
         self.move_snake('up')
@@ -37,33 +38,33 @@ class GreedySnakeGame():
     def restart(self):
         self.logger.info('Game Start')
         self.snake.revive()
-        self.running = True
+        self.score = 0
 
     def move_snake(self, direction):
         self.snake.move(direction)
         if self.snake.eat(self.egg):
             self.score+=10
-            self.egg = Egg(self.field)
+            self.egg = Egg(self.rect)
         
     def update(self):
         if self.snake.is_alive():
             self.move_snake('')
-        else:
-            self.running = False
-            self.score = 0
 
-    def is_running(self):
-        return self.running
+    def gameover(self):
+        return not self.snake.is_alive()
         
     def get_info(self):
-        field = [[0]* self.BOARDER] * self.BOARDER
+        field = [[0]* self.BOARDER for i in range(self.BOARDER) ]
         
-        for c in self.snake.position:
-            field[c] = 1
+        if not self.gameover():
+            for (x,y) in self.snake.position:
+                x = min(self.BOARDER-1, x)
+                y = min(self.BOARDER-1, y)
+                field[x][y] = 1
+            
+            field[self.egg.x][self.egg.y] = 2
         
-        field[self.egg.x, self.egg.y] = 2
-        
-        return (field, self.score)
+        return field
 
     def get_score(self):
         return self.score
@@ -71,29 +72,29 @@ class GreedySnakeGame():
 
 #%%        
 class GreedySnake:
-    def __init__(self, lim):
+    def __init__(self, rect):
         self.logger = logging.getLogger(__name__)
-        self.lim = lim
-        self.revive()
+        self.rect = rect
+        self.alive = False
         
     def revive(self):
-        center_x = int(self.lim[-1] * 0.5)
+        center_x = int(self.rect[-1] * 0.5)
 
         self.position = [(center_x, 1), (center_x, 0)]
         self.direction = 'down'
         self.alive = True
-        self.logger.info('Snake revived.')
+        self.logger.debug('Snake revived.')
         
     def die(self):
         self.alive = False
-        self.logger.info('Snake died.')
+        self.logger.debug('Snake died.')
     
     def is_alive(self):
         return self.alive
         
     def move(self, new_direction=''):
         if not self.is_alive():
-            self.logger.info('Dead snake does not move.')
+            self.logger.debug('Dead snake does not move.')
             return
             
         old_direction = self.direction
@@ -112,33 +113,31 @@ class GreedySnake:
 #            return
 #            
         if   m==('down', 'up') or m==('up', 'down') or m==('left', 'right') or m==('right', 'left'):
-#            self.die();
-            m==m
-        elif new_direction == 'left':
-            self.dx = -1
-            self.dy = 0
+            self.die();
+            return
+            
+        if   new_direction == 'left':
+            dx = -1
+            dy = 0
         elif new_direction == 'right':
-            self.dx = 1
-            self.dy = 0
+            dx = 1
+            dy = 0
         elif new_direction == 'up':
-            self.dx = 0
-            self.dy = -1
+            dx = 0
+            dy = -1
         elif new_direction ==  'down':
-            self.dx = 0
-            self.dy = 1
+            dx = 0
+            dy = 1
         else:
             return
             
         self.position[1] = self.position[0]
-        x = self.position[0][0]+ self.dx
-        y = self.position[0][1]+ self.dy
+        x = self.position[0][0]+ dx
+        y = self.position[0][1]+ dy
         
-        x0,x1,y0,y1 = self.lim
+        x0,y0,x1,y1 = self.rect
         if x<x0 or x>=x1 or y<y0 or y>=y1:
             self.die()
-        
-        self.dx=0
-        self.dy=0
         
         self.position[0] = [x,y]
 #        print(self.position)
@@ -148,8 +147,8 @@ class GreedySnake:
 
 #%%        
 class Egg:
-    def __init__(self, lim):
-        x0,x1,y0,y1 = lim
+    def __init__(self, rect):
+        x0,y0,x1,y1 = rect
         self.x = randint(x0, x1-1)
         self.y = randint(y0, y1-1)
 
