@@ -1,0 +1,575 @@
+    1  sudo su
+    2  sudo su
+    3  exit
+    4  ls
+    5  ls /
+    6  vi /boot/grub/grub.cfg 
+    7  sudo su
+    8  sudo halt
+    9  sudo su
+   10  ls
+   11  apt list 
+   12  apt list | grep docker
+   13  man apt
+   14  apt list --installed | grep docker
+   15  apt list |grep decker
+   16  sudo apt-get install docker
+   17  docker
+   18  man docker
+   19  startx
+   20  sudo startx
+   21  sudo su
+   22  ls
+   23  sudo reboot
+   24  apt list --installed | grep docker
+   25  docker --help
+   26  python
+   27  pip list
+   28  sudo apt-get install python-pip
+   29  pip list
+   30  pip list | grep numpy
+   31  pip install numpy scipy
+   32  sudo pip install numpy scipy
+   33  vi .pip/pip.conf
+   34  sudo pip install numpy
+   35  vi .pip/pip.conf
+   36  sudo pip install numpy
+   37  vi .pip/pip.conf
+   38  sudo pip install numpy
+   39  sudo apt-get install docker
+   40  docker
+   41  sudo apt-get install docker.io
+   42  apt list |docker
+   43  apt list | grep docker
+   44  docker
+   45  docker |less
+   46  which docker
+   47  which docker.io
+   48  service docker.io status
+   49  sudo service docker.io status
+   50  docker version
+   51  sudo docker version
+   52  docker pull tensorflow/tensorflow
+   53  sudo docker pull tensorflow/tensorflow
+   54  docker info
+   55  sudo docker info
+   56  sudo docker images
+   57  vi /etc/default/docker 
+   58  sudo docker pull daocloud.io/daocloud/tensorflow:1.0.0-rc1
+   59  sudo docker pull daocloud.io/daocloud/tensorflow:1.0.0-rc1-devel-gpu
+   60  sudo docker images
+   61  du -s
+   62  df
+   63  sudo docker pull gcr.io/tensorflow/tensorflow
+   64  df
+   65  du
+   66  sudo docker image
+   67  sudo docker images
+   68  sudo docker run daocloud.io/daocloud/tensorflow
+   69  sudo docker run daocloud.io/daocloud/tensorflow:1.0.0-rc1-devel-gpu
+   70  ps
+   71  ps -A
+   72  ps -A | grep dock
+   73  ps -A | grep docker
+   74  top
+   75  ls
+   76  ls -l
+   77  ls .
+   78  ls -a
+   79  ls -al
+   80  sudo docker run -it -p 8888:8888 daocloud.io/daocloud/tensorflow:1.0.0-rc1-devel-gpu
+   81  sudo docker run -it -p 8888:8888 daocloud.io/daocloud/tensorflow:1.0.0-rc1
+   82  sudo docker pull daocloud.io/daocloud/tensorflow:1.0.0-rc1
+   83  vi /etc/docker/
+   84  ls /etc/docker/
+   85  sudo ls /etc/docker/
+   86  sudo vi /etc/docker/daemon.json
+   87  sudo docker
+   88  sudo docker pull tensorflow/tensorflow
+   89  sudo docker pull learn/tutorial
+   90  sudo docker search tensorflow
+   91  sudo vi /etc/docker/daemon.json
+   92  vi /etc/default/docker 
+   93  sudo echo "DOCKER_OPTS=\"\$DOCKER_OPTS --registry-mirror=http://hub-mirror.c.163.com\"" >> /etc/default/docker
+   94  sudo su
+   95  vi /etc/default/docker 
+   96  sudo service docker restart
+   97  sudo docker search tensorflow
+   98  sudo docker pull tensorflow/tensorflow
+   99  sudo docker pull tensorflow/tensorflow:1.0.1
+  100  sudo curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://966149ff.m.daocloud.io
+  101  apt info
+  102  apt
+  103  apt show docker.io
+  104  apt show docker.io |less
+  105  sudo docker login daocloud.io
+  106  sudo su
+  107  sudo docker pull daocloud.io/daocloud/tensorflow:1.0.0-rc1
+  108  sudo apt-get update
+  109  sudo apt-get install     linux-image-extra-$(uname -r)     linux-image-extra-virtual
+  110  sudo apt-get remove docker docker.io
+  111  sudo apt-get install docker-ce
+  112  apt-cache search docker
+  113  apt-cache policy docker.io
+  114  sudo apt-get install docker.io
+  115  sudo docker run -it -p 8888:8888 daocloud.io/daocloud/tensorflow bash
+  116  sudo docker run -it -p 8888:8888 daocloud.io/daocloud/tensorflow:1.0.0-rc1-devel-gpu bash
+  117  sudo halt
+  118  cd Downloads/
+  119  bash Anaconda3-4.3.1-Linux-x86_64.sh 
+  120  cd ../anaconda3/
+  121  ls
+  122  ls bin
+  123  ls
+  124  ls envs/
+  125  conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  126  conda config --set show_channel_urls yes
+  127  vi .bashrc
+  128  vi ~/.bashrc
+  129  source ~/.bashrc
+  130  conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  131  conda config --set show_channel_urls yes
+  132  cd ..
+  133  conda
+  134  conda activate root
+  135  conda info --envs
+  136  source activate root
+  137  ls
+  138  exit
+  139  apt list
+  140  apt-get list |grep dock
+  141  apt-get show |grep dock
+  142  apt list |grep dock
+  143  apt list |grep docker
+  144  apt-cache search |grep docker
+  145  apt-cache search docker
+  146  exit
+  147  sudo su
+  148  exit
+  149  conda list
+  150  conda search theano
+  151  cd
+  152  sudo docker network ls
+  153  ping localhost
+  154  ifconfig
+  155  sudo docker ps
+  156  sudo docker network inspect
+  157  sudo docker network inspect bridge
+  158  sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+  159  sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-trusty main'
+  160  sudo apt-get update
+  161  sudo apt-get purge lxc-docker*
+  162  sudo apt-get install docker-engine
+  163  sudo apt-get install     linux-image-extra-$(uname -r)     linux-image-extra-virtual
+  164  sudo apt-get install     apt-transport-https     ca-certificates     curl     software-properties-common
+  165  sudo apt-key fingerprint 0EBFCD88
+  166  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add
+  167  apt-cache madison docker-ce
+  168  apt-cache search docker
+  169  docker
+  170  docker -v
+  171  sudo docker run hello-world
+  172  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  173  sudo apt-key fingerprint 0EBFCD88
+  174  sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  175     $(lsb_release -cs) \
+  176     stable"
+  177  sudo apt-get update
+  178  docker login daocloud.io
+  179  sudo docker login daocloud.io
+  180  sudo docker pull daocloud.io/daocloud/tensorflow:1.0.0-rc1
+  181  ls .docker/
+  182  sudo ls .docker/
+  183  ls
+  184  python
+  185  apt-cache search python
+  186  apt-cache search python | grep python3
+  187  ls /var/lib/docker/
+  188  sudo ls /var/lib/docker/
+  189  sudo ls /var/lib/docker/image/
+  190  sudo ls /var/lib/docker -l
+  191  sudo ls /var/lib/docker/volumes
+  192  sudo ls /var/lib/docker/containers
+  193  sudo ls /var/lib/docker/containers/
+  194  sudo su
+  195  cd
+  196  sudo docker
+  197  sudo docker images 
+  198  sudo docker images
+  199  sudo docker containers
+  200  sudo docker container
+  201  sudo docker container prune
+  202  sudo docker image
+  203  sudo docker image prune
+  204  sudo docker image ls
+  205  sudo docker image history
+  206  sudo docker image history 1547
+  207  sudo docker image history f26
+  208  sudo docker image ls f26
+  209  sudo docker image ls
+  210  sudo docker image
+  211  sudo docker image inspect f26
+  212  sudo docker image inspect f26 | less
+  213  python3
+  214  python2
+  215  alias python=python3
+  216  python
+  217  sudo docker run -it kaixhin/theano
+  218  docker ps
+  219  sudo docker ps
+  220  sudo docker run hello-world
+  221  sudo docker-machine regenerate-certs default
+  222  docker-machine restart default
+  223  sudo docker-machine restart default
+  224  sudo /etc/init.d/docker restart
+  225  sudo docker run hello-world
+  226  sudo docker run -it kaixhin/theano
+  227  sudo /etc/init.d/docker restart
+  228  sudo docker run -it kaixhin/theano
+  229  sudo docker images
+  230  sudo docker run -it f265
+  231  conda info --env
+  232  spyder
+  233  which spyder
+  234  less `which spyder`
+  235  conda install -n keras -c conda-forge keras
+  236  conda help
+  237  conda info --env
+  238  conda info --envs
+  239  conda create -h
+  240  conda create -n keras -c conda-forge keras
+  241  conda install -n keras -c conda-forge keras
+  242  conda install -n keras -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge keras
+  243  activate keras
+  244  source activate keras
+  245  ls
+  246  python
+  247  conda install spyder
+  248  conda install -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge tensorflow
+  249  python
+  250  vi ~/.keras/keras.json 
+  251  python
+  252  conda install spyder
+  253  sypder
+  254  conda install spyder
+  255  ls
+  256  cd anaconda3/envs/keras/
+  257  ls
+  258  cd bin
+  259  ls
+  260  deactivate
+  261  cd
+  262  source deactivate
+  263  conda remove keras --all
+  264  conda remove -n keras --all
+  265  conda info --env
+  266  conda install -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge tensorflow
+  267  conda install -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge tensorflow keras
+  268  spyder
+  269  sudo halt
+  270  dir
+  271  md Code
+  272  mkdir Code
+  273  cd Code/
+  274  git clone https://github.com/jiayou/machine_learning
+  275  cd machine_learning/
+  276  cd Keras-Test/
+  277  ls
+  278  vi keras_nn1.py 
+  279  spyder
+  280  exit
+  281  cd Code/
+  282  cd machine_learning/
+  283  ls
+  284  ls Keras-Test/
+  285  ls
+  286  mkdir Lib
+  287  cd Lib/
+  288  mkdir datasets
+  289  cd datasets/
+  290  touch __init__.py
+  291  copy ../../Keras-Test/mnist_dataset.py 
+  292  cp ../../Keras-Test/mnist_dataset.py 
+  293  cp ../../Keras-Test/mnist_dataset.py .
+  294  ls
+  295  mv mnist_dataset.py mnist.py 
+  296  dir
+  297  ls
+  298  vi __init__.py 
+  299  cd ..
+  300  mv datasets/ ../
+  301  l
+  302  ls
+  303  cd ..
+  304  ls
+  305  ll
+  306  dir datasets/
+  307  mv datasets/ ./Keras-Test/
+  308  mv Keras-Test/datasets Lib/
+  309  echo $PYTHONPATH
+  310  mv Lib/datasets Keras-Test/
+  311  cd Keras-Test/
+  312  ls
+  313  cd datasets/
+  314  ls
+  315  mv MNIST/ mnist
+  316  ls
+  317  ls ~
+  318  ll ~
+  319  cd
+  320  cd Code/
+  321  ls
+  322  cd machine_learning/
+  323  git
+  324  git status
+  325  ls ~
+  326  git add -i
+  327  git status
+  328  git add *
+  329  git status
+  330  git add -A
+  331  git status
+  332  git commit -m "train keras nn1 done (MNIST, linux)"
+  333  git config --global user.email "jiayou@github"
+  334  git config --global user.name "jiayou"
+  335  git commit -m "train keras nn1 done (MNIST, linux)"
+  336  git status
+  337  git push
+  338  ls
+  339  ls Keras-Test/
+  340  xxd ww1
+  341  apt-cache search xxd
+  342  apt-cache search xx
+  343  apt-cache search hex
+  344  apt-cache search hex |grep view
+  345  cat Keras-Test/ww1 
+  346  62;9;c
+  347  xxd
+  348  xxd Keras-Test/ww1 
+  349  xxd Keras-Test/ww1  |less
+  350  xxd Keras-Test/mm1  |less
+  351  cd Keras-Test/
+  352  ll
+  353  tar cvf mm1
+  354  tar cf mm1
+  355  tar cf mmz mm1 
+  356  ls
+  357  ll
+  358  tar cjf mmr mm1 
+  359  ll
+  360  rm mm* ww1
+  361  ls
+  362  cd ..
+  363  git pull
+  364  git log
+  365  git rebase -i 8510
+  366  git status
+  367  git diff
+  368  git add *
+  369  git status
+  370  git commit -m "start to try CNN"
+  371  git status 
+  372  git push
+  373  git log
+  374  git log --graph
+  375  conda list
+  376  conda list|grep cv
+  377  cd Downloads/Linux_UFRIILT_PrinterDriver_V130_uk-EN/
+  378  ls
+  379  bash install.sh 
+  380  sudo bash install.sh 
+  381  cd /
+  382  cd
+  383  conda install graphviz pydot
+  384  conda install pydot
+  385  conda info pydot
+  386  conda info graphviz
+  387  conda install graphviz
+  388  cd Code/machine_learning/Keras-Test/
+  389  ls
+  390  ps -A
+  391  ps -A | grep file
+  392  ps -A | grep exp
+  393  ps -A | grep k
+  394  git status
+  395  git add *.py
+  396  cd ..
+  397  git status
+  398  git commit -m "CNN batch execute, test results to be checked."
+  399  git status
+  400  git push
+  401  cd Keras-Test/
+  402  ls *.txt
+  403  cat *.txt | grep Error
+  404  less ../.gitignore 
+  405  cd ..
+  406  git status
+  407  git add *.py
+  408  git add --all *.py
+  409  git status
+  410  git commit -m "Use expanded MNIST dataset."
+  411  git status
+  412  git push
+  413  ls
+  414  cd Keras-Test/
+  415  ls
+  416  ls datasets/
+  417  mv 2017* log/
+  418  ls
+  419  ls log
+  420  ll
+  421  less batch_run.py 
+  422  less keras_nn1[B.py 
+  423  less keras_nn2.py 
+  424  less expand_dataset.py 
+  425  ls
+  426  mv mm_model 2017-03-25\ 23\:41\:33.397518_model.h5
+  427  ls
+  428  ll
+  429  mv _expanded_mnist_dataset_ _expanded_mnist_dataset_.tar.bz2
+  430  tar --help
+  431  tar t _expanded_mnist_dataset_.tar.bz2 
+  432  tar -t _expanded_mnist_dataset_.tar.bz2 
+  433  tar tf _expanded_mnist_dataset_.tar.bz2 
+  434  tar -tvf _expanded_mnist_dataset_.tar.bz2 
+  435  ls
+  436  ll
+  437  tar cvf _expanded_mnist_dataset_.tar.gz _expanded_mnist_dataset_.pkl 
+  438  ll
+  439  rm _expanded_mnist_dataset_.tar.gz 
+  440  tar cvzf _expanded_mnist_dataset_.tar.gz _expanded_mnist_dataset_.pkl 
+  441  ll
+  442  ls -l
+  443  git status
+  444  mv _expanded_mnist_dataset_.tar.gz 2017-03-25\ 23\:41\:33.397518_exp_mnist.tar.gz
+  445  mv _saved_history_.pkl 2017-03-25\ 23\:41\:33.397518_history.pkl
+  446  ll
+  447  ls *.pkl
+  448  rm *.pkl
+  449  ll
+  450  tar cvzf mnist_dataset_expanded.tar.gz mnist_dataset_expanded.pkl 
+  451  git status
+  452  git add 2017* *.py
+  453  git status
+  454  git add datasets/mnist_dataset_expanded.tar.gz 
+  455  less ../.gitignore 
+  456  git commit -m "error less than 65/10000 with model trained by expanded MNIST dataset."
+  457  git status
+  458  git push
+  459  sudo reboot
+  460  conda list
+  461  conda list quiver
+  462  conda help
+  463  conda search quiver
+  464  conda search quiver*
+  465  cd Code/machine_learning/Keras-Test/
+  466  cd ..
+  467  git status
+  468  git diff *.py
+  469  git diff -- *.py
+  470  exit
+  471  cd Code/machine_learning/
+  472  git add *.py
+  473  git status
+  474  git commit -m "use ADAM instead of SGD to achieve higher accuracy."
+  475  git status
+  476  cd Keras-Test/
+  477  xxd 2017-03-25\ 23\:41\:33.397518_model.h5 
+  478  xxd 2017-03-25\ 23\:41\:33.397518_model.h5 |less
+  479  git status
+  480  git add -A *.py
+  481  git status
+  482  git add *.py
+  483  git status
+  484  git rm result_analysis.py 
+  485  git status
+  486  git commit -m "DRY, dataset, evaluate, etc"
+  487  git add *.py
+  488  git status
+  489  git commit -m "use validation data to evaluate."
+  490  git push
+  491  git diff keras_nn2.py
+  492  git checkout -- keras_nn2.py
+  493  git status
+  494  exit
+  495  sudo apt-get install gcc
+  496  l;
+  497  ll
+  498  ls
+  499  ls -l
+  500  cd Code/
+  501  ls
+  502  mkdir socket
+  503  cd socket/
+  504  ls
+  505  wget "http://www.linuxhowtos.org/data/6/server.c
+  506  "
+  507  wget "http://www.linuxhowtos.org/data/6/server.c"
+  508  ll
+  509  wget http://www.linuxhowtos.org/data/6/client.c
+  510  gcc -o server.out server.c 
+  511  ls
+  512  gcc -o client.out client.c 
+  513  server.out &
+  514  cd Code/socket/
+  515  client localhost 51517
+  516  client.out localhost 51517
+  517  ll
+  518  ./client.out localhost 51517
+  519  vi client.c
+  520  ./client.out localhost 51517
+  521  ./client.out localhost 515
+  522  ./client.out localhos 333
+  523  ./client.out 1.1.1.1 333
+  524  ./client.out localhost 21
+  525  ./client.out localhost 22
+  526  ./client.out localhost 23
+  527  ./client.out localhost 110
+  528  ./client.out localhost 1
+  529  ./client.out localhost 0
+  530  ./client.out localhost 13400
+  531  ./client.out localhost 33333
+  532  pid
+  533  ps
+  534  ./client.out localhost 33333
+  535  ps
+  536  ps -A
+  537  wget http://www.linuxhowtos.org/data/6/server_udp.c
+  538  wget http://www.linuxhowtos.org/data/6/client_udp.c
+  539  ll
+  540  gcc -o server_udp.out server_udp.c 
+  541  gcc -o client_udp.out client_udp.c 
+  542  ./client_udp.out localhost 22222
+  543  ps -A
+  544  ./client_udp.out localhost 22222
+  545  vi server_udp.c
+  546  vi client_udp.
+  547  vi client_udp.c
+  548  ./client_udp.out localhost 2222
+  549  ./client_udp.out localhost 22222
+  550  hhh
+  551  ./client_udp.out localhost 22222
+  552  vi client_udp.
+  553  vi client_udp.c
+  554  cd Code/socket/
+  555  ./server.out 51517
+  556  vi socket.c
+  557  vi server.c
+  558  vi client.c
+  559  cp server.c server1.c
+  560  vi server1.c 
+  561  gcc -o server1.out server1.c
+  562  vi server1.c 
+  563  gcc -o server1.out server1.c
+  564  vi server1.c 
+  565  wget http://www.linuxhowtos.org/data/6/server2.c
+  566  rm server1.c 
+  567  gcc -o server2.out server2.c
+  568  vi server2.c
+  569  ./server2.out 33333
+  570  ./server_udp.out 22222
+  571  vim
+  572  sudo apt-get install vim
+  573  bii
+  574  git
+  575  history > hhhh.txt
